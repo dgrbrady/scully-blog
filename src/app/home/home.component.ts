@@ -4,7 +4,7 @@ import { ScullyRoutesService } from '@scullyio/ng-lib';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   links$ = this.scully.available$;
