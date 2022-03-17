@@ -1,6 +1,8 @@
-<p>home works!</p>
-<ul>
-  <li *ngFor="let page of links$ | async">
-    <a [routerLink]="page.route">{{ page.title }}</a>
-  </li>
-</ul>
+<section class="md:mx-[25%]">
+  <h1>Posts</h1>
+  <ul>
+    <li *ngFor="let page of links$ | async" class="my-4">
+      <a [routerLink]="page.route" class="text-xl">{{ page.title }}</a>
+    </li>
+  </ul>
+</section>

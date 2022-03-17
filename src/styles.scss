@@ -4,6 +4,28 @@
 
 @layer base {
   body {
-    @apply bg-green-50;
+    @apply bg-sumilnk1 text-fujiWhite;
+  }
+  a {
+    text-decoration-line: underline;
+    @apply text-lightBlue decoration-crystalBlue;
+  }
+  hr {
+    @apply text-katanaGray;
+  }
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  h4, h5, h6 {
+    @apply text-lg;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    @apply border-b border-b-katanaGray text-oniViolet;
   }
 }
