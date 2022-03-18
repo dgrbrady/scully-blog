@@ -1,3 +1,6 @@
+@import '~prismjs/plugins/toolbar/prism-toolbar.css';
+@import '~prismjs/themes/prism-tomorrow';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,5 +30,28 @@
   }
   h1,h2,h3,h4,h5,h6 {
     @apply border-b border-b-katanaGray text-oniViolet;
+  }
+  pre,code {
+    @apply bg-sumilnk0 text-lightBlue;
+  }
+  ::marker {
+    @apply text-sakuraPink;
+  }
+}
+
+ul,ol {
+  list-style-type: auto;
+  list-style-position: inside;
+  padding-left: 1rem;
+}
+
+p {
+  padding-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 1rem;
+  ul {
+    margin-top: 0.5rem;
   }
 }

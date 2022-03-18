@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, Inject, Renderer2, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, ROUTES } from '@angular/router';
-
-declare var ng: any;
+import { SyntaxHighlightService } from '../services/syntax-highlight.service';
 
 @Component({
   selector: 'app-blog',
@@ -10,8 +10,30 @@ declare var ng: any;
   preserveWhitespaces: true,
   encapsulation: ViewEncapsulation.Emulated,
 })
-export class BlogComponent implements OnInit {
-  ngOnInit() {}
+export class BlogComponent implements AfterViewInit {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private syntaxHighlightService: SyntaxHighlightService,
+    @Inject(DOCUMENT) private document: Document,
+    private renderer2: Renderer2
+  ) {}
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  ngAfterViewInit(): void {
+    this.fixTocLinks();
+    this.syntaxHighlightService.highlightAll();
+  }
+
+  private fixTocLinks() {
+    const tocSelector = 'h2#toc ~ ul';
+    const toc = this.document.querySelector<HTMLUListElement>(tocSelector);
+    if (toc) {
+      const links = toc.querySelectorAll('a');
+      links.forEach((link) => {
+        const href = link.getAttribute('href');
+        const route = this.route.snapshot.url.toString();
+        this.renderer2.setAttribute(link, 'href', `blog/${route}${href}`);
+      });
+    }
+  }
 }
