@@ -9,7 +9,8 @@
     "test": "ng test",
     "scully": "npx scully --",
     "scully:serve": "npx scully serve --",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:prod": "ng build && scully --prod --scanRoutes"
   },
   "private": true,
   "dependencies": {
